@@ -6,13 +6,12 @@ public class PlayerMove : MonoBehaviour
 {
 
     [Header("Player Settings")]
-    public Rigidbody rb;
     public int speed;
+    public float lookSpeed;
+    public Transform playerModel;
 
     [Header("Limits & target")]
-    public Transform lookTarget;
-    public Vector3 minRotation;
-    public Vector3 maxRotation;
+    public Transform aimTarget;
 
     float inputX, inputY;
     Vector3 velocity;
@@ -24,37 +23,49 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
-        CaptureInput();
-        LockRotation();
-        //transform.LookAt(lookTarget);
+        inputX = Input.GetAxis("Horizontal");
+        inputY = Input.GetAxis("Vertical");
+
+        LocalMove(inputX, inputY, speed);
+        RotationLook(inputX, inputY, lookSpeed);
+        HorizontalLean(playerModel, inputX, 50, 0.1f);
     }
 
-    void CaptureInput()
+    void LocalMove(float x, float y, float _speed)
     {
-        inputX = Input.GetAxisRaw("Horizontal");
-        inputY = Input.GetAxisRaw("Vertical");
-
-        velocity = new Vector3(inputX, inputY, 0f) * speed;
+        transform.localPosition += new Vector3(x,y,0) * _speed * Time.deltaTime;
+        ClampPosition();
     }
 
-    void LockRotation()
+    void ClampPosition()
     {
-        float x = Mathf.Clamp(transform.eulerAngles.x, minRotation.x, maxRotation.x);
-        float y = Mathf.Clamp(transform.eulerAngles.y, minRotation.y, maxRotation.y);
-        float z = Mathf.Clamp(transform.eulerAngles.z, minRotation.z, maxRotation.z);
-
-        transform.eulerAngles = new Vector3(x, y, z);
+        Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
+        pos.x = Mathf.Clamp01(pos.x);
+        pos.y = Mathf.Clamp01(pos.y);
+        transform.position = Camera.main.ViewportToWorldPoint(pos);
     }
 
-    private void FixedUpdate()
+    void RotationLook(float x, float y, float _speed)
     {
-        Move();
+        aimTarget.parent.position = Vector3.zero;
+        aimTarget.localPosition = new Vector3(x, y, 1);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(aimTarget.position), Mathf.Deg2Rad * _speed * Time.deltaTime);
     }
 
-    void Move()
+    void HorizontalLean(Transform target, float axis, float leanLimit, float lerpTime)
     {
-        rb.velocity = velocity * Time.fixedDeltaTime;
+        Vector3 targetEulerAngels = target.localEulerAngles;
+        target.localEulerAngles = new Vector3(targetEulerAngels.x, targetEulerAngels.y, Mathf.LerpAngle(targetEulerAngels.z, -axis * leanLimit, lerpTime));
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(aimTarget.position, .5f);
+        Gizmos.DrawSphere(aimTarget.position, .15f);
+
+    }
+
 
 
 }
