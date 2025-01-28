@@ -15,12 +15,6 @@ public class ScreenLimits : MonoBehaviour
 
     private void Update()
     {
-
-        if (!Application.isPlaying)
-        {
-            transform.localPosition = offset;
-        }
-
         FollowTarget(target);
     }
 
