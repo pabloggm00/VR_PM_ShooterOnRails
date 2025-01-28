@@ -6,6 +6,7 @@ public class ScreenLimits : MonoBehaviour
 {
     public Vector2 limits = new Vector2(5, 3);
     public Transform target;
+    public Vector3 offset = Vector3.zero;
 
     [Range(0, 1)]
     public float smoothTime;
@@ -14,6 +15,12 @@ public class ScreenLimits : MonoBehaviour
 
     private void Update()
     {
+
+        if (!Application.isPlaying)
+        {
+            transform.localPosition = offset;
+        }
+
         FollowTarget(target);
     }
 
@@ -21,7 +28,7 @@ public class ScreenLimits : MonoBehaviour
     {
         Vector3 localPos = transform.localPosition;
         Vector3 targetLocalPos = t.transform.localPosition;
-        transform.localPosition = Vector3.SmoothDamp(localPos, new Vector3(targetLocalPos.x, targetLocalPos.y, localPos.z), ref velocity, smoothTime);
+        transform.localPosition = Vector3.SmoothDamp(localPos, new Vector3(targetLocalPos.x + offset.x, targetLocalPos.y + offset.y, localPos.z), ref velocity, smoothTime);
     }
 
     private void LateUpdate()
