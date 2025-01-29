@@ -271,6 +271,8 @@ GameObject:
   - component: {fileID: 279208727}
   - component: {fileID: 279208726}
   - component: {fileID: 279208725}
+  - component: {fileID: 279208728}
+  - component: {fileID: 279208729}
   m_Layer: 0
   m_Name: Modelo
   m_TagString: Untagged
@@ -368,6 +370,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 279208723}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!95 &279208728
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 279208723}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2b5e65493945ce44eb6a43f1e746b11b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &279208729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 279208723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffe9a81a53ff06e4cb9a96197517e87a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 299962733}
 --- !u!1 &299962731
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,11 +453,12 @@ MonoBehaviour:
   lookSpeed: 12000
   playerModel: {fileID: 279208724}
   keyboard: 1
+  anim: {fileID: 279208728}
   aimTarget: {fileID: 1316180835}
   offsetX: 0.1
   offsetY: 0.1
   dashDistance: 4
-  dashSpeed: 10
+  dashSpeed: 2
 --- !u!1 &325293182
 GameObject:
   m_ObjectHideFlags: 0

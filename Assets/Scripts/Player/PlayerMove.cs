@@ -11,6 +11,7 @@ public class PlayerMove : MonoBehaviour
     public float lookSpeed;
     public Transform playerModel;
     public bool keyboard;
+    public Animator anim;
 
     [Header("Limits & target")]
     public Transform aimTarget;
@@ -24,6 +25,7 @@ public class PlayerMove : MonoBehaviour
     float inputX, inputY;
     Vector3 velocity;
     bool isDashing;
+    bool isInvulnerable;
 
     private void Start()
     {
@@ -39,11 +41,11 @@ public class PlayerMove : MonoBehaviour
         {
             if (inputX < 0)
             {
-                StartCoroutine(Dash(-1, playerModel));
+                Dash(-1);
 
             }else if (inputX > 0)
             {
-                StartCoroutine(Dash(1, playerModel));
+                Dash(1);
             }
         }
 
@@ -82,41 +84,25 @@ public class PlayerMove : MonoBehaviour
         target.localEulerAngles = new Vector3(targetEulerAngels.x, targetEulerAngels.y, Mathf.LerpAngle(targetEulerAngels.z, -axis * leanLimit, lerpTime));
     }
 
-    IEnumerator Dash(int direction, Transform target)
+    void Dash(int direction)
     {
         isDashing = true;
+        isInvulnerable = true;
 
-        //Position
-        Vector3 targetPosition = transform.localPosition + new Vector3(dashDistance * direction, 0, 0);
-
-        //Rotation
-        Vector3 targetEulerAngels = target.localEulerAngles;
-        float startZRotation =targetEulerAngels.z;
-        float currentZRotation = startZRotation;
-
-        float distanceCovered = 0f; 
-
-        while (distanceCovered < dashDistance)
+        if (direction == -1)
         {
-        
-            float step = dashSpeed * Time.deltaTime;
-            distanceCovered += step;
-
-            //position
-            transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPosition, step);
-            //lerp en un while no puede ser porque está continuamente empezando la interpolación
-
-            //rotation
-            //float t = distanceCovered / dashDistance;
-            currentZRotation = Mathf.LerpAngle(startZRotation, startZRotation + 280 * direction, step);
-            target.localEulerAngles = new Vector3(targetEulerAngels.x, targetEulerAngels.y, currentZRotation);
-
-            ClampPosition();
-
-            yield return null; 
+            anim.SetTrigger("DashLeft");
         }
+        else if (direction == 1)
+        {
+            anim.SetTrigger("DashRight");
+        }
+    }
 
-        isDashing = false; 
+    public void DashEnd()
+    {
+        isDashing = false;
+        isInvulnerable = false;
     }
 
     private void OnDrawGizmos()
