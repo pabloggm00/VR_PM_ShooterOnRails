@@ -45,10 +45,10 @@ public class PlayerShoot : MonoBehaviour
     private void DetectarObjetivo()
     {
         Vector3 pointerPosition = crosshair.pointer.position; // Posición de la mira
-        Vector3 direction = (pointerPosition - Camera.main.transform.position).normalized; // Dirección desde la nave hasta la mira
+        //Vector3 direction = (pointerPosition - Camera.main.transform.position).normalized; // Dirección desde la nave hasta la mira
 
         RaycastHit hit;
-        if (Physics.Raycast(Camera.main.transform.position, direction, out hit, rango))
+        if (Physics.Raycast(Camera.main.transform.position, pointerPosition, out hit, rango))
         {
             if (hit.collider.CompareTag("Enemigo"))
             {
@@ -59,7 +59,7 @@ public class PlayerShoot : MonoBehaviour
         }
         else
         {
-            shootDirection = direction; // Si no hay colisión, sigue la dirección de la mira
+            shootDirection = pointerPosition; // Si no hay colisión, sigue la dirección de la mira
             pointerHUD.color = Color.white;
         }
     }
@@ -124,7 +124,7 @@ public class PlayerShoot : MonoBehaviour
         Vector3 direction = (pointerPosition - spawnShoot.position).normalized;
 
         // Dibujar la línea desde la nave hasta la mira
-        Gizmos.DrawLine(Camera.main.transform.position, spawnShoot.position + direction * rango);
+        Gizmos.DrawLine(Camera.main.transform.position, direction * rango);
 
         // Dibujar un pequeño punto en la posición de la mira
         Gizmos.color = Color.green;
