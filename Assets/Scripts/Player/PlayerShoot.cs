@@ -9,14 +9,10 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float speedBullet;
     [SerializeField] private Transform spawnShoot;
+    [SerializeField] private float bulletFireRate;
     //[SerializeField] private ParticleSystem particleShot;
-
-
-    public Transform cam;
-    public float rango;
-    public LayerMask ignoreMask;
-    public Crosshair crosshair; // Referencia al script de la mira
-    public Image pointerHUD;
+    public LayerMask myLayerMask;
+    public Transform pointer;
     private Vector3 shootDirection;
 
     private GameObject poolParent;
@@ -33,47 +29,38 @@ public class PlayerShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //shootDirection = crosshair.DetectarEnemigo();
 
-        DetectarObjetivo();
-
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetMouseButtonDown(0))
         {
-            Disparar();
+            InvokeRepeating("Disparar", 0, bulletFireRate);
         }
-    }
 
-    private void DetectarObjetivo()
-    {
-        Vector3 pointerPosition = crosshair.pointer.position; // Posición de la mira
-        //Vector3 direction = (pointerPosition - Camera.main.transform.position).normalized; // Dirección desde la nave hasta la mira
-
-        RaycastHit hit;
-        if (Physics.Raycast(Camera.main.transform.position, pointerPosition, out hit, rango))
+        if (Input.GetMouseButtonUp(0))
         {
-            if (hit.collider.CompareTag("Enemigo"))
-            {
-                shootDirection = (hit.point - spawnShoot.position).normalized; // Apuntar al impacto
-                pointerHUD.color = Color.red;
-
-            }
-        }
-        else
-        {
-            shootDirection = pointerPosition; // Si no hay colisión, sigue la dirección de la mira
-            pointerHUD.color = Color.white;
+            CancelInvoke("Disparar");
         }
     }
 
     public void Disparar()
     {
 
-        // Recuperamos la posición del pointer
-        Vector3 targetPosition = crosshair.pointer.position;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
 
-        // Calculamos la dirección del disparo (de spawnShoot hacia el pointer)
-        Vector3 direction = (targetPosition - spawnShoot.position).normalized;
+        Physics.Raycast(ray, out hit, Mathf.Infinity, myLayerMask);
 
-        //particleShot.gameObject.SetActive(true);
+        Vector3 hitPoint = hit.point;
+     
+        if (hit.collider == null)
+        {
+            hitPoint = pointer.position;
+        }
+       
+
+        shootDirection = hitPoint - spawnShoot.position;
+
+
 
         // Comprobamos qué balas de la lista de balas en uso
         // se han descativado al colisionar y las devolvemos a la pool.
@@ -109,13 +96,13 @@ public class PlayerShoot : MonoBehaviour
 
         // Configurar bala
         chosenBullet.transform.position = spawnShoot.position;
-        chosenBullet.transform.rotation = Quaternion.LookRotation(shootDirection); // Rotamos la bala hacia el objetivo
+        chosenBullet.transform.LookAt(hitPoint);
         chosenBullet.SetActive(true);
         chosenBullet.GetComponent<Bullet>().Init(speedBullet, shootDirection);
 
     }
 
-    private void OnDrawGizmos()
+    /*private void OnDrawGizmos()
     {
         if (spawnShoot == null || crosshair == null) return;
 
@@ -129,5 +116,5 @@ public class PlayerShoot : MonoBehaviour
         // Dibujar un pequeño punto en la posición de la mira
         Gizmos.color = Color.green;
         Gizmos.DrawSphere(pointerPosition, 0.2f);
-    }
+    }*/
 }

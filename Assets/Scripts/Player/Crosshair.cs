@@ -1,19 +1,19 @@
-using Cinemachine;
-using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Crosshair : MonoBehaviour
 {
 
     [Header("Pointer Settings")]
     public Transform pointer; 
-    public Camera mainCamera; 
-    public float distanceFromCamera = 20f;
-    public Vector2 pointerOffset;
     public RectTransform pointerHUD;
+    public Image pointerImage;
+    public LayerMask myLayerMask;
 
+    private void Start()
+    {
+        Cursor.visible = false; 
+    }
 
     void Update()
     {
@@ -22,59 +22,32 @@ public class Crosshair : MonoBehaviour
 
     void MovePointer()
     {
+        Vector3 mousePos = Input.mousePosition;
 
-        Vector3 mousePosition = Input.mousePosition;
+    
+       
+        mousePos.x = Mathf.Clamp(mousePos.x, 0, Screen.width);
+        mousePos.y = Mathf.Clamp(mousePos.y, 0, Screen.height);
 
+        pointerHUD.position = mousePos;
 
-        Ray ray = mainCamera.ScreenPointToRay(mousePosition);
-        Vector3 targetPosition = ray.GetPoint(distanceFromCamera);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
 
-  
-        Vector3 clampedPosition = ClampToScreenBounds(targetPosition);
+        Vector3 rayPoint = ray.GetPoint(Vector3.Distance(pointer.position, Camera.main.transform.position));
+        pointer.transform.position = new Vector3(rayPoint.x, rayPoint.y, pointer.transform.position.z);
 
-
-        pointer.position = clampedPosition;
-
-        UpdatePointerPosition();
-    }
-
-    Vector3 ClampToScreenBounds(Vector3 worldPosition)
-    {
-  
-        Vector3 viewportPosition = mainCamera.WorldToViewportPoint(worldPosition);
-
-
-        viewportPosition.x = Mathf.Clamp01(viewportPosition.x);
-        viewportPosition.y = Mathf.Clamp01(viewportPosition.y);
-
-        viewportPosition.z = distanceFromCamera;
-
-        Vector3 clampedWorldPosition = mainCamera.ViewportToWorldPoint(viewportPosition);
-
-
-        return clampedWorldPosition;
-    }
-
-    //Actualizamos el pointer en el hud
-    void UpdatePointerPosition()
-    {
-        if (pointerHUD == null) return;
-
-     
-        Vector3 screenPosition = Camera.main.WorldToScreenPoint(pointer.position);
-
-        screenPosition.x += pointerOffset.x;
-        screenPosition.y += pointerOffset.y;
-
-        pointerHUD.position = screenPosition;
-    }
-
-    private void OnDrawGizmos()
-    {
-        if (pointer != null)
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, myLayerMask))
         {
-            Gizmos.color = UnityEngine.Color.red;
-            Gizmos.DrawWireSphere(pointer.position, 0.2f);
+            pointerImage.color = Color.red;
         }
+        else
+        {
+            pointerImage.color = Color.white;
+        }
+
     }
+
+
+
 }
