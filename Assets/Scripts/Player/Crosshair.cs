@@ -9,6 +9,7 @@ public class Crosshair : MonoBehaviour
     public RectTransform pointerHUD;
     public Image pointerImage;
     public LayerMask myLayerMask;
+    Enemy enemigoSelected = null;
 
     private void Start()
     {
@@ -37,12 +38,27 @@ public class Crosshair : MonoBehaviour
         Vector3 rayPoint = ray.GetPoint(Vector3.Distance(pointer.position, Camera.main.transform.position));
         pointer.transform.position = new Vector3(rayPoint.x, rayPoint.y, pointer.transform.position.z);
 
+        
+
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, myLayerMask))
         {
             pointerImage.color = Color.red;
+
+            /*enemigoSelected = hit.transform.GetComponentInParent<Enemy>();
+            enemigoSelected.enemyDescription.SetActive(true);*/ // Hay que comprobar al final si es mucha carga
+
+            if (hit.transform.TryGetComponent<Enemy>(out Enemy enemigo))
+            {
+                enemigoSelected = enemigo;
+                enemigoSelected.enemyDescription.SetActive(true); // Hay que comprobar al final si es mucha carga
+            }
         }
         else
         {
+            if (enemigoSelected != null)
+            {
+                enemigoSelected.enemyDescription.SetActive(false);
+            }
             pointerImage.color = Color.white;
         }
 

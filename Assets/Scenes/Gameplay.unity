@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 270209536}
   - component: {fileID: 270209535}
   - component: {fileID: 270209534}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AlaDerecha
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -273,7 +273,7 @@ GameObject:
   - component: {fileID: 279208725}
   - component: {fileID: 279208728}
   - component: {fileID: 279208729}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Modelo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -416,7 +416,7 @@ GameObject:
   - component: {fileID: 299962732}
   - component: {fileID: 299962733}
   - component: {fileID: 299962734}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -492,7 +492,7 @@ GameObject:
   m_Component:
   - component: {fileID: 325293183}
   - component: {fileID: 325293184}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EstelaIzquierda)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1056,7 +1056,7 @@ GameObject:
   - component: {fileID: 753237114}
   - component: {fileID: 753237113}
   - component: {fileID: 753237112}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PointerObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1158,7 +1158,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 777928228}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpawnShoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1580,7 +1580,7 @@ GameObject:
   - component: {fileID: 1178686291}
   - component: {fileID: 1178686290}
   - component: {fileID: 1178686289}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AlaIzquierda
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1673,6 +1673,63 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1178686287}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1201967801
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6003269829095494080, guid: 1933ba0c64e504742a94804cdbb4e19d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 6003269829095494080, guid: 1933ba0c64e504742a94804cdbb4e19d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 6003269829095494080, guid: 1933ba0c64e504742a94804cdbb4e19d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 6003269829095494080, guid: 1933ba0c64e504742a94804cdbb4e19d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6003269829095494080, guid: 1933ba0c64e504742a94804cdbb4e19d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6003269829095494080, guid: 1933ba0c64e504742a94804cdbb4e19d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6003269829095494080, guid: 1933ba0c64e504742a94804cdbb4e19d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6003269829095494080, guid: 1933ba0c64e504742a94804cdbb4e19d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6003269829095494080, guid: 1933ba0c64e504742a94804cdbb4e19d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6003269829095494080, guid: 1933ba0c64e504742a94804cdbb4e19d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664627998268866898, guid: 1933ba0c64e504742a94804cdbb4e19d, type: 3}
+      propertyPath: m_Name
+      value: Asteroide
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1933ba0c64e504742a94804cdbb4e19d, type: 3}
 --- !u!1 &1316180834
 GameObject:
   m_ObjectHideFlags: 0
@@ -1877,6 +1934,110 @@ PrefabInstance:
       propertyPath: m_Name
       value: StarSparrow14
       objectReference: {fileID: 0}
+    - target: {fileID: 2098272522190691103, guid: ac02b746f53c1d9469d0fc7ce156481e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308946621647944785, guid: ac02b746f53c1d9469d0fc7ce156481e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308946621779959673, guid: ac02b746f53c1d9469d0fc7ce156481e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308946621791923964, guid: ac02b746f53c1d9469d0fc7ce156481e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308946621822788693, guid: ac02b746f53c1d9469d0fc7ce156481e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308946622084322213, guid: ac02b746f53c1d9469d0fc7ce156481e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308946622281885363, guid: ac02b746f53c1d9469d0fc7ce156481e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308946622312067698, guid: ac02b746f53c1d9469d0fc7ce156481e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308946622332305852, guid: ac02b746f53c1d9469d0fc7ce156481e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308946622379373571, guid: ac02b746f53c1d9469d0fc7ce156481e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308946622437946012, guid: ac02b746f53c1d9469d0fc7ce156481e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308946622440473451, guid: ac02b746f53c1d9469d0fc7ce156481e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308946622499404184, guid: ac02b746f53c1d9469d0fc7ce156481e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308946622615339296, guid: ac02b746f53c1d9469d0fc7ce156481e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308946622634875601, guid: ac02b746f53c1d9469d0fc7ce156481e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308946622706768589, guid: ac02b746f53c1d9469d0fc7ce156481e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308946622734124554, guid: ac02b746f53c1d9469d0fc7ce156481e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308946623066938798, guid: ac02b746f53c1d9469d0fc7ce156481e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308946623269930406, guid: ac02b746f53c1d9469d0fc7ce156481e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308946623374756838, guid: ac02b746f53c1d9469d0fc7ce156481e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308946623435970995, guid: ac02b746f53c1d9469d0fc7ce156481e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308946623487505077, guid: ac02b746f53c1d9469d0fc7ce156481e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308946623509031215, guid: ac02b746f53c1d9469d0fc7ce156481e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308946623537665811, guid: ac02b746f53c1d9469d0fc7ce156481e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308946623667106576, guid: ac02b746f53c1d9469d0fc7ce156481e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308946623709639794, guid: ac02b746f53c1d9469d0fc7ce156481e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1928,7 +2089,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1401845950}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Estelas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2020,66 +2181,6 @@ MonoBehaviour:
   m_YawDamping: 0
   m_RollDamping: 0
   m_AngularDamping: 0
---- !u!1001 &1566291831
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6003269829095494080, guid: 1933ba0c64e504742a94804cdbb4e19d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.28
-      objectReference: {fileID: 0}
-    - target: {fileID: 6003269829095494080, guid: 1933ba0c64e504742a94804cdbb4e19d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6003269829095494080, guid: 1933ba0c64e504742a94804cdbb4e19d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 7.42
-      objectReference: {fileID: 0}
-    - target: {fileID: 6003269829095494080, guid: 1933ba0c64e504742a94804cdbb4e19d, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6003269829095494080, guid: 1933ba0c64e504742a94804cdbb4e19d, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6003269829095494080, guid: 1933ba0c64e504742a94804cdbb4e19d, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6003269829095494080, guid: 1933ba0c64e504742a94804cdbb4e19d, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6003269829095494080, guid: 1933ba0c64e504742a94804cdbb4e19d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6003269829095494080, guid: 1933ba0c64e504742a94804cdbb4e19d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6003269829095494080, guid: 1933ba0c64e504742a94804cdbb4e19d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7664627998268866898, guid: 1933ba0c64e504742a94804cdbb4e19d, type: 3}
-      propertyPath: m_Name
-      value: Enemy
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4872199126873849332, guid: 1933ba0c64e504742a94804cdbb4e19d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-  m_SourcePrefab: {fileID: 100100000, guid: 1933ba0c64e504742a94804cdbb4e19d, type: 3}
 --- !u!1 &1575765749
 GameObject:
   m_ObjectHideFlags: 0
@@ -2090,7 +2191,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1575765750}
   - component: {fileID: 1575765751}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EstelaCentro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2533,7 +2634,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85bef12999172ff43a7c0ff9bc24a569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleCollisionBullet: {fileID: 0}
+  particleCollisionBullet: {fileID: 2708598583397607910, guid: 6398d43fe79ea0140913dc5530c646af, type: 3}
+  die: {fileID: 8791802859067835849, guid: ae07f2a45f14a82428409cfe410e6002, type: 3}
+  text:
+  - {fileID: 3337905222051100615, guid: 1244a9e4f6193654989497ad418a287b, type: 3}
+  - {fileID: 6470223850953089096, guid: 1e54877675f6e4a46ad7ca7c4d7a5bf6, type: 3}
 --- !u!4 &1956919325
 Transform:
   m_ObjectHideFlags: 0
@@ -2559,7 +2664,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1998730080}
   - component: {fileID: 1998730079}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EstelaDerecha
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2847,5 +2952,5 @@ SceneRoots:
   - {fileID: 1929083639}
   - {fileID: 1614766938}
   - {fileID: 2100757177}
-  - {fileID: 1566291831}
   - {fileID: 1956919325}
+  - {fileID: 1201967801}

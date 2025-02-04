@@ -923,8 +923,8 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: VR_PM_ShooterOnRails
-  metroPackageVersion: 
+  metroPackageName: VRPMShooterOnRails
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -932,7 +932,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: VR_PM_ShooterOnRails
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: VR_PM_ShooterOnRails
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0
