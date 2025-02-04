@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerShoot : MonoBehaviour
 {
 
+    [SerializeField] private int dmg;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float speedBullet;
     [SerializeField] private Transform spawnShoot;
@@ -98,7 +99,7 @@ public class PlayerShoot : MonoBehaviour
         chosenBullet.transform.position = spawnShoot.position;
         chosenBullet.transform.LookAt(hitPoint);
         chosenBullet.SetActive(true);
-        chosenBullet.GetComponent<Bullet>().Init(speedBullet, shootDirection);
+        chosenBullet.GetComponent<Bullet>().Init(speedBullet, shootDirection, dmg);
 
     }
 
