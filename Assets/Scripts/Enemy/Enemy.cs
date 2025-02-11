@@ -8,7 +8,6 @@ public class Enemy : MonoBehaviour
 {
     [Header("Propiedades")]
     public string nombre;
-    public int dmg;
     public int HP = 3;
     public int currentHP = 3;
 
@@ -44,15 +43,11 @@ public class Enemy : MonoBehaviour
         hpSprite.fillAmount = (float)currentHP / HP;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        enemyDescription.SetActive(true);  
-    }
 
-    void Die()
+    public virtual void Die()
     {
         //destruir objeto
-        VFXController.instance.EnemyDeath(transform.position);
+        
         this.gameObject.SetActive(false);
     }
 }

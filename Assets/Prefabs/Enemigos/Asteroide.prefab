@@ -106,7 +106,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.18, y: 1.54, z: 1}
+  m_Size: {x: 2.14, y: 2.6, z: 1.7}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3128031330221153428
 MonoBehaviour:
@@ -121,12 +121,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nombre: Asteroide
-  dmg: 0
   HP: 3
   currentHP: 3
   hpSprite: {fileID: 2097359994508715022}
   description: {fileID: 5034910948002167428}
   enemyDescription: {fileID: 328126300826717371}
+  isRotate: 1
   asteroide: {fileID: 8213990914701452043}
 --- !u!1001 &999932184850825046
 PrefabInstance:
@@ -243,11 +243,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1014899055782066, guid: 45b62242ff99b0a48a47f713cd6d1687, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1014899055782066, guid: 45b62242ff99b0a48a47f713cd6d1687, type: 3}
       propertyPath: m_TagString
-      value: Enemigo
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 1822345149752838, guid: 45b62242ff99b0a48a47f713cd6d1687, type: 3}
       propertyPath: m_Name
@@ -311,7 +311,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 65566858718617196, guid: 45b62242ff99b0a48a47f713cd6d1687, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 65566858718617196, guid: 45b62242ff99b0a48a47f713cd6d1687, type: 3}
       propertyPath: m_IsTrigger
@@ -320,13 +320,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1014899055782066, guid: 45b62242ff99b0a48a47f713cd6d1687, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 146158211192654705}
   m_SourcePrefab: {fileID: 100100000, guid: 45b62242ff99b0a48a47f713cd6d1687, type: 3}
 --- !u!4 &8208426784730890383 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4992838361154946, guid: 45b62242ff99b0a48a47f713cd6d1687, type: 3}
   m_PrefabInstance: {fileID: 8213312682546152717}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8212339578408545727 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1014899055782066, guid: 45b62242ff99b0a48a47f713cd6d1687, type: 3}
+  m_PrefabInstance: {fileID: 8213312682546152717}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &146158211192654705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8212339578408545727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f80ceda586de54c4fbc01b1e66caf854, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
 --- !u!1 &8213990914701452043 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1822345149752838, guid: 45b62242ff99b0a48a47f713cd6d1687, type: 3}

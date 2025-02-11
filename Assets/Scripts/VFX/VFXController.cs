@@ -6,6 +6,8 @@ public class VFXController : MonoBehaviour
 {
 
     public static VFXController instance;
+    [Header("Player")]
+    public ParticleSystem diePlayer;
 
     [Header("Bullet")]
     public ParticleSystem particleCollisionBullet;
@@ -22,6 +24,7 @@ public class VFXController : MonoBehaviour
     public void CollisionBullet(Vector3 position)
     {
         Instanciar(particleCollisionBullet ,position);
+        
     }
 
     public void EnemyDeath(Vector3 position)
@@ -30,11 +33,18 @@ public class VFXController : MonoBehaviour
 
         int rnd = Random.Range(0, text.Length);
 
-        Instanciar(text[rnd], position);
+        GameObject particle = Instanciar(text[rnd], position);
+
+        Destroy(particle, 2f);
     }
 
-    void Instanciar(ParticleSystem particula, Vector3 position)
+    GameObject Instanciar(ParticleSystem particula, Vector3 position)
     {
-        Instantiate(particula, position, Quaternion.identity);
+        return Instantiate(particula, position, Quaternion.identity).gameObject;
+    }
+
+    public void PlayerDeath(Vector3 position)
+    {
+        Instanciar(diePlayer, position);
     }
 }

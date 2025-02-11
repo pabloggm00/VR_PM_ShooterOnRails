@@ -14,6 +14,7 @@ public class Bullet : MonoBehaviour
         speed = _speed;
         direction = _direction;
         dmg = _dmg;
+        StartCoroutine(HideBullet());
     }
 
 
@@ -28,9 +29,16 @@ public class Bullet : MonoBehaviour
         if (other.TryGetComponent<Enemy>(out Enemy enemigo))
         {
             enemigo.TakeDamage(dmg);
-            
+           
         }
-
         VFXController.instance.CollisionBullet(transform.position);
+        this.gameObject.SetActive(false);
+    }
+
+    IEnumerator HideBullet()
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        this.gameObject.SetActive(false);
     }
 }

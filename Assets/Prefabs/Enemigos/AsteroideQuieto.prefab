@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2986091669445581467}
-  - component: {fileID: 6037323239676817336}
+  - component: {fileID: 5210385453596122821}
   - component: {fileID: 8875964860012909759}
   m_Layer: 6
   m_Name: AsteroideQuieto
@@ -35,7 +35,7 @@ Transform:
   - {fileID: 8176666238984190459}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6037323239676817336
+--- !u!114 &5210385453596122821
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,16 +44,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 2928038970040362243}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 494c1479238f38543962a4be7906b04c, type: 3}
+  m_Script: {fileID: 11500000, guid: 4093c893508da4943bfbea549a400b83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nombre: aaaaaaaaaasteroide
-  dmg: 500
+  nombre: ASR300
   HP: 3
   currentHP: 3
   hpSprite: {fileID: 2985046422994128130}
   description: {fileID: 8190300536960439176}
   enemyDescription: {fileID: 3529677536326739383}
+  isRotate: 0
+  asteroide: {fileID: 0}
 --- !u!65 &8875964860012909759
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -171,7 +172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 679414794473583597, guid: e3fd52e56edb20044abf98f41682f4f4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5164076390079377195, guid: e3fd52e56edb20044abf98f41682f4f4, type: 3}
       propertyPath: m_FlipX
