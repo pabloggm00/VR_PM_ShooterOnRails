@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public string nombre;
     public int HP = 3;
     public int currentHP = 3;
+    public int dmg;
 
     [Header("DescripcionUI")]
     public Image hpSprite;
@@ -50,4 +51,6 @@ public class Enemy : MonoBehaviour
         
         this.gameObject.SetActive(false);
     }
+
+    
 }

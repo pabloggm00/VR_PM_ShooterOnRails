@@ -25,7 +25,8 @@ public class PlayerMove : MonoBehaviour
     float inputX, inputY;
     Vector3 velocity;
     bool isDashing;
-    bool isInvulnerable;
+
+    [HideInInspector] public bool isInvulnerable;
 
     private void Start()
     {

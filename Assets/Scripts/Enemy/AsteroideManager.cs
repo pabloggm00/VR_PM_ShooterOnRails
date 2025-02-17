@@ -5,20 +5,37 @@ using UnityEngine;
 
 public class AsteroideManager : MonoBehaviour
 {
-    public GameObject asteroidePrefab;
-    public Transform nave;
-    public CinemachineDollyCart dollyCart;
+    public CinemachinePathBase recorrido;
+    public GameObject asteroideDollyCarPrefab;
     public float timeEntreAsteroides = 2f;
+    public float velocidadAsteroides = 20f;
+
+    private int contadorAsteroides;
+    private int maxAsteroides = 2;
 
     private void Start()
     {
-        InvokeRepeating("LanzarAsteroide", 1f, timeEntreAsteroides);
+        InvokeRepeating("LanzarAsteroide", 0f, timeEntreAsteroides);
     }
 
     void LanzarAsteroide()
     {
-        GameObject asteroide = Instantiate(asteroidePrefab, transform.position, Quaternion.identity);
-        Debug.Log(dollyCart.m_Speed);
-        asteroide.GetComponent<Asteroide>().Init(nave.position, dollyCart.m_Speed);
+
+        if (contadorAsteroides >= maxAsteroides)
+        {
+            CancelInvoke("LanzarAsteroide");
+        }
+
+        contadorAsteroides++;
+
+        GameObject asteroide = Instantiate(asteroideDollyCarPrefab, transform.position, Quaternion.identity);
+
+        asteroide.GetComponent<CinemachineDollyCart>().m_Path = recorrido;
+        asteroide.GetComponent<CinemachineDollyCart>().m_Speed = velocidadAsteroides;
+
+        asteroide.GetComponentInChildren<Asteroide>().Init();
+
     }
+
+
 }

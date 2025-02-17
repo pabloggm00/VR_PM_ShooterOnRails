@@ -29,10 +29,10 @@ public class Bullet : MonoBehaviour
         if (other.TryGetComponent<Enemy>(out Enemy enemigo))
         {
             enemigo.TakeDamage(dmg);
-           
+            VFXController.instance.CollisionBullet(transform.position);
+            this.gameObject.SetActive(false);
         }
-        VFXController.instance.CollisionBullet(transform.position);
-        this.gameObject.SetActive(false);
+   
     }
 
     IEnumerator HideBullet()

@@ -16,6 +16,10 @@ public class VFXController : MonoBehaviour
     public ParticleSystem die;
     public ParticleSystem[] text;
 
+    [Header("Mina")]
+    public ParticleSystem minaExploit;
+    public ParticleSystem minaDie;
+
     private void Awake()
     {
         instance = this;
@@ -25,6 +29,18 @@ public class VFXController : MonoBehaviour
     {
         Instanciar(particleCollisionBullet ,position);
         
+    }
+
+    public void MinaExploit(Vector3 position)
+    {
+        Instanciar(minaExploit, position);
+
+    }
+
+    public void MinaDie(Vector3 position)
+    {
+        Instanciar(minaDie, position);
+
     }
 
     public void EnemyDeath(Vector3 position)
