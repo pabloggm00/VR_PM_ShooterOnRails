@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
@@ -5,6 +6,7 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    public CinemachineDollyCart cart;
 
     [Header("Player Settings")]
     public int speed;
@@ -114,6 +116,15 @@ public class PlayerMove : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("BossStop"))
+        {
+            cart.m_Speed = 0;
+            other.GetComponent<BoxCollider>().enabled = false;
+            GameplayController.instance.StartBoss();
+        }
+    }
 
 
 }

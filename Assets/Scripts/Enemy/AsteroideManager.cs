@@ -11,7 +11,7 @@ public class AsteroideManager : MonoBehaviour
     public float velocidadAsteroides = 20f;
 
     private int contadorAsteroides;
-    private int maxAsteroides = 2;
+    public int maxAsteroides = 2;
 
     private void Start()
     {
