@@ -108,6 +108,7 @@ MonoBehaviour:
   enemyDescription: {fileID: 7848578171974598622}
   timeToExploit: 1.5
   colliderDamage: {fileID: 2138898866667835418}
+  explosion: {fileID: 8300000, guid: 8ce0ab9dbec26f247a3612a9aae23427, type: 3}
   material: {fileID: 2100000, guid: 82c97815f01775d4899d78255a373dfe, type: 2}
   emissionColor: {r: 1, g: 1, b: 1, a: 1}
   minIntensity: 0.2

@@ -13,6 +13,7 @@ public class MenuController : MonoBehaviour
     public Slider musicSlider;
     public Slider sFXSlider;
 
+    public AudioClip button;
 
     private void Start()
     {
@@ -27,11 +28,13 @@ public class MenuController : MonoBehaviour
 
     public void Jugar()
     {
+        AudioManager.instance.PlaySFX(button, false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void Salir()
     {
+        AudioManager.instance.PlaySFX(button, false);
         Application.Quit();
     }
 

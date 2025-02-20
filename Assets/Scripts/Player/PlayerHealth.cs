@@ -11,6 +11,13 @@ public class PlayerHealth : MonoBehaviour
     [Header("UI")]
     public Image fill;
 
+    [Header("Blink Settings")]
+    public Material damageMaterial;
+    public Renderer shipRenderer;
+    public float blinkDuration = 0.2f;
+    public int blinkCount = 5;
+    private Material originalMaterial;
+
     private bool isInvulnerable;
     private PlayerMove playerMove;
 
@@ -18,6 +25,9 @@ public class PlayerHealth : MonoBehaviour
     {
         playerMove = GetComponent<PlayerMove>();
         currentHealth = hp;
+
+        if (shipRenderer != null)
+            originalMaterial = shipRenderer.material;
     }
 
     private void Update()
@@ -44,10 +54,22 @@ public class PlayerHealth : MonoBehaviour
     IEnumerator StartInvulnreability()
     {
         isInvulnerable = true;
+        StartCoroutine(BlinkEffect());
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(blinkCount * blinkDuration);
 
         isInvulnerable = false;
+    }
+
+    IEnumerator BlinkEffect()
+    {
+        for (int i = 0; i < blinkCount; i++)
+        {
+            shipRenderer.material = damageMaterial;
+            yield return new WaitForSeconds(blinkDuration);
+            shipRenderer.material = originalMaterial;
+            yield return new WaitForSeconds(blinkDuration);
+        }
     }
 
     void Die()

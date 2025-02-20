@@ -7,6 +7,7 @@ public class Mina : Enemy
     [Header("Explosión")]
     public float timeToExploit;
     public BoxCollider colliderDamage;
+    public AudioClip explosion;
 
     [Header("Parpadeo")]
     public Material material;
@@ -62,6 +63,7 @@ public class Mina : Enemy
         StartCoroutine(ShowHideCollider());
         //activar particulas
         VFXController.instance.MinaExploit(transform.position);
+        AudioManager.instance.PlaySFX(explosion, false);
         //ocultar mina
         this.gameObject.GetComponent<MeshRenderer>().enabled = false;
     }
@@ -78,8 +80,9 @@ public class Mina : Enemy
 
     public override void Die()
     {
-        base.Die();
+
         VFXController.instance.MinaDie(transform.position);
+        base.Die();
     }
     IEnumerator BlinkEmission()
     {

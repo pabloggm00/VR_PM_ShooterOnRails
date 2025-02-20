@@ -179,6 +179,8 @@ public class AudioManager : MonoBehaviour
         PlayerPrefs.SetFloat("SFXVolume", volume);
         audioMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 30);
         sFXVolume = volume;
+
+
     }
 
 }

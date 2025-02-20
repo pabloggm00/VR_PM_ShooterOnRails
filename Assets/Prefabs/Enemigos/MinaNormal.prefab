@@ -185,15 +185,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2af2ec7ba76cce45be0f67cb7e880ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nombre: SRMINA02
-  HP: 3
-  currentHP: 3
+  nombre: SRMINA01
+  HP: 5
+  currentHP: 5
   dmg: 2
   hpSprite: {fileID: 5170145921080953088}
   description: {fileID: 2235128241723365258}
   enemyDescription: {fileID: 6797867795184148917}
-  timeToExploit: 1.5
+  timeToExploit: 0.4
   colliderDamage: {fileID: 5075770993392105903}
+  explosion: {fileID: 8300000, guid: 8ce0ab9dbec26f247a3612a9aae23427, type: 3}
   material: {fileID: 2100000, guid: 82c97815f01775d4899d78255a373dfe, type: 2}
   emissionColor: {r: 1, g: 1, b: 1, a: 1}
   minIntensity: 0.2

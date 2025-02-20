@@ -49,6 +49,21 @@ public class Boss : MonoBehaviour
 
         }
 
+        DetectWin();
+
+    }
+
+    void DetectWin()
+    {
+        foreach (Transform child in asteroidesParent.transform)
+        {
+            if (child.gameObject.activeSelf)
+            {
+                return;
+            }
+        }
+
+        GameplayController.instance.Win();
     }
 
     IEnumerator RotateAndExploit()
