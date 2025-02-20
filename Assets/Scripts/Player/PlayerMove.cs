@@ -26,36 +26,45 @@ public class PlayerMove : MonoBehaviour
 
     float inputX, inputY;
     Vector3 velocity;
-    bool isDashing;
+
+    [Header("SFX")]
+    public AudioClip motor;
 
     [HideInInspector] public bool isInvulnerable;
 
     private void Start()
     {
-        
+        AudioManager.instance.PlaySFX(motor, true);
     }
 
     private void Update()
     {
-        inputX = keyboard ? Input.GetAxis("Horizontal") : Input.GetAxis("Mouse X");
-        inputY = keyboard ? Input.GetAxis("Vertical") : Input.GetAxis("Mouse Y");
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (!GameplayController.instance.onPause)
         {
-            if (inputX < 0)
-            {
-                Dash(-1);
 
-            }else if (inputX > 0)
+            inputX = keyboard ? Input.GetAxis("Horizontal") : Input.GetAxis("Mouse X");
+            inputY = keyboard ? Input.GetAxis("Vertical") : Input.GetAxis("Mouse Y");
+
+            if (Input.GetKeyDown(KeyCode.LeftShift))
             {
-                Dash(1);
+                if (inputX < 0)
+                {
+                    Dash(-1);
+
+                }
+                else if (inputX > 0)
+                {
+                    Dash(1);
+                }
             }
+
+
+            LocalMove(inputX, inputY, speed);
+            RotationLook(inputX, inputY, lookSpeed);
+            HorizontalLean(playerModel, inputX, 50, 0.1f);
         }
 
-
-        LocalMove(inputX, inputY, speed);
-        RotationLook(inputX, inputY, lookSpeed);
-        HorizontalLean(playerModel, inputX, 50, 0.1f);
 
         
     }
@@ -89,7 +98,7 @@ public class PlayerMove : MonoBehaviour
 
     void Dash(int direction)
     {
-        isDashing = true;
+
         isInvulnerable = true;
 
         if (direction == -1)
@@ -104,7 +113,7 @@ public class PlayerMove : MonoBehaviour
 
     public void DashEnd()
     {
-        isDashing = false;
+
         isInvulnerable = false;
     }
 

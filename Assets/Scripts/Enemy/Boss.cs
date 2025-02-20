@@ -16,10 +16,17 @@ public class Boss : MonoBehaviour
 
     public GameObject planeta;
     public GameObject sizeBoss;
+    public GameObject panelExplosion;
+    public GameObject asteroidesParent;
 
     private bool canExploit;
-    private bool canRotate = true;
+    private bool canRotate;
     private int contParticlesTime;
+
+    [Header("ShakeCamera")]
+    public float intensity, frequency, duration;
+
+    
 
     public void Init()
     {
@@ -34,13 +41,9 @@ public class Boss : MonoBehaviour
         if (canRotate)
         {
             contParticlesTime++;
-            effect.SetFloat("SpawnRate", Mathf.Clamp(contParticlesTime * speedEffect, 0, 550000f));
+            effect.SetFloat("SpawnRate", Mathf.Clamp(contParticlesTime * speedEffect, 0, 1313500f));
             effect.SetFloat("TrailSpawnRate", Mathf.Clamp(contParticlesTime * speedEffect / speedOffsetTrails, 0, 60f));
 
-            if (effect.GetFloat("SpawnRate") == 1000000f)
-            {
-                sizeBoss.GetComponent<Animator>().enabled = true;
-            }
         }
 
     }
@@ -49,32 +52,50 @@ public class Boss : MonoBehaviour
     {
         while (!canExploit)
         {
-            // Aumentar la velocidad de rotación progresivamente
             rotationSpeed = Mathf.Min(rotationSpeed + (rotationAcceleration * Time.deltaTime), maxRotationSpeed);
 
-            // Aplicar rotación
-            transform.Rotate(Vector3.right * rotationSpeed * Time.deltaTime);
+            planeta.transform.Rotate(Vector3.right * rotationSpeed * Time.deltaTime);
 
-            // Cuando la velocidad alcanza el máximo, activar explosión
             if (rotationSpeed >= maxRotationSpeed)
             {
                 canExploit = true;
-                Explode();
+                sizeBoss.GetComponent<Animator>().enabled = true;
             }
 
-            yield return null; // Esperar un frame antes de continuar
+            yield return null; 
         }
+
+        yield return new WaitForSeconds(0.6f);
+
+        planeta.SetActive(false);
+        CameraShake.Instance.Shake(intensity, frequency, duration);
+        sizeBoss.GetComponent<Animator>().SetTrigger("Big");
+
 
         yield return new WaitForSeconds(0.2f);
 
-        //dejar el humo puesto
+        Explode();
+      
+
+        yield return new WaitForSeconds(0.5f);
+            
+        asteroidesParent.SetActive(true);
+        
         //lanzar asteroides
+    }
+
+    public void HideBall()
+    {
+        sizeBoss.SetActive(false);
     }
 
     void Explode()
     {
+        
+        panelExplosion.GetComponent<Animator>().enabled = true;
         Debug.Log("Explota");
+ 
         //VFXController.instance.ExplosionPlanet(planeta.transform.position);
-        planeta.SetActive(false);
+        
     }
 }

@@ -11,7 +11,7 @@ public class MinaStartCooldown : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             mina.canStartCooldown = true;
-            Debug.Log("Es el player");
+    
         }
     }
 }

@@ -44,18 +44,21 @@ public class Crosshair : MonoBehaviour
         {
             pointerImage.color = Color.red;
 
-            /*enemigoSelected = hit.transform.GetComponentInParent<Enemy>();
-            enemigoSelected.enemyDescription.SetActive(true);*/ // Hay que comprobar al final si es mucha carga
+
 
             if (hit.transform.TryGetComponent<Enemy>(out Enemy enemigo))
             {
                 enemigoSelected = enemigo;
-                enemigoSelected.enemyDescription.SetActive(true); // Hay que comprobar al final si es mucha carga
+                if (enemigoSelected.enemyDescription != null)
+                {
+                    enemigoSelected.enemyDescription.SetActive(true); 
+                }
+           
             }
         }
         else
         {
-            if (enemigoSelected != null)
+            if (enemigoSelected != null && enemigoSelected.enemyDescription != null)
             {
                 enemigoSelected.enemyDescription.SetActive(false);
             }

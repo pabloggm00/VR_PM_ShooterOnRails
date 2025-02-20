@@ -8,11 +8,12 @@ public class Asteroide : Enemy
 
     private Vector3 rotationSpeed;
 
-    public GameObject? asteroide;
-    public ParticleSystem? estela;
+    public GameObject asteroide;
+    public ParticleSystem estela;
 
     void Start()
     {
+        InitDescription();
 
         if (asteroide != null && isRotate)
         {
@@ -32,8 +33,12 @@ public class Asteroide : Enemy
         Vector3 position = new Vector3(Random.Range(-8,8), Random.Range(-5, 5), 0);
 
         transform.localPosition = position;
-       // estela.transform.rotation = Quaternion.LookRotation(-direccion);
-        estela.transform.position = transform.position;
+        // estela.transform.rotation = Quaternion.LookRotation(-direccion);
+        if (estela != null)
+        {
+            estela.transform.position = transform.position;
+        }
+
 
     }
 

@@ -17,15 +17,13 @@ public class Enemy : MonoBehaviour
     public TMP_Text description;
     public GameObject enemyDescription;
 
-    private void Start()
+   public virtual void InitDescription()
     {
-        description.text = nombre;
-    }
+        if (enemyDescription != null)
+        {
+            description.text = nombre;
+        }
 
-
-    private void Update()
-    {
-        
     }
 
     public void TakeDamage(int dmg)
@@ -41,7 +39,11 @@ public class Enemy : MonoBehaviour
 
     public virtual void UpdateHP()
     {
-        hpSprite.fillAmount = (float)currentHP / HP;
+        if (hpSprite != null)
+        {
+            hpSprite.fillAmount = (float)currentHP / HP;
+        }
+
     }
 
 

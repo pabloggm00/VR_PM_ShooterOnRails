@@ -21,13 +21,15 @@ public class Mina : Enemy
 
     private bool isEmissionOn;
 
-    //[HideInInspector]
+    [HideInInspector]
     public bool canStartCooldown;
     private float timePassed;
 
     private void Start()
     {
-        StartCoroutine(BlinkEmission()); 
+        StartCoroutine(BlinkEmission());
+
+        InitDescription();
     }
 
     private void Update()
@@ -94,7 +96,7 @@ public class Mina : Enemy
                 yield return new WaitForSeconds(timeOff);
             }
 
-            isEmissionOn = !isEmissionOn; // Cambia el estado
+            isEmissionOn = !isEmissionOn; //Cambia el estado
         }
     }
 

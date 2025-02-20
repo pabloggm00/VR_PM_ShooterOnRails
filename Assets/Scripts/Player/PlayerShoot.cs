@@ -21,6 +21,9 @@ public class PlayerShoot : MonoBehaviour
     private List<GameObject> bulletActive = new();
     private List<GameObject> bulletPool = new();
 
+    [Header("SFX")]
+    public AudioClip shootSFX;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,12 +35,17 @@ public class PlayerShoot : MonoBehaviour
     {
         //shootDirection = crosshair.DetectarEnemigo();
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !GameplayController.instance.onPause)
         {
             InvokeRepeating("Disparar", 0, bulletFireRate);
         }
 
         if (Input.GetMouseButtonUp(0))
+        {
+            CancelInvoke("Disparar");
+        }
+
+        if (GameplayController.instance.onPause)
         {
             CancelInvoke("Disparar");
         }
@@ -100,6 +108,7 @@ public class PlayerShoot : MonoBehaviour
         chosenBullet.transform.LookAt(hitPoint);
         chosenBullet.SetActive(true);
         chosenBullet.GetComponent<Bullet>().Init(speedBullet, shootDirection, dmg);
+        AudioManager.instance.PlaySFX(shootSFX, false);
 
     }
 

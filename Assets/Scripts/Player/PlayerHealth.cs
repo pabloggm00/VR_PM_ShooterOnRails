@@ -53,6 +53,8 @@ public class PlayerHealth : MonoBehaviour
     void Die()
     {
         VFXController.instance.PlayerDeath(transform.position);
+        GameplayController.instance.PanelMuerte();
+        playerMove.cart.m_Speed = 0;
     }
 
     private void OnTriggerEnter(Collider other)
