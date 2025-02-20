@@ -7139,8 +7139,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0030119724, y: 0.010062657, z: -0.0005368904, w: 0.99994475}
-  m_LocalPosition: {x: -0.33926082, y: 1.1002148, z: -54.924988}
+  m_LocalRotation: {x: -0.07636972, y: 0.1650706, z: 0.035381995, w: 0.98268384}
+  m_LocalPosition: {x: 45.755882, y: 25.322008, z: 262.8264}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10169,7 +10169,7 @@ MonoBehaviour:
   m_UpdateMethod: 0
   m_PositionUnits: 1
   m_Speed: 20
-  m_Position: 0
+  m_Position: 509.76
 --- !u!4 &1321008995
 Transform:
   m_ObjectHideFlags: 0
@@ -10178,8 +10178,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1321008993}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0030461624, y: 0.09309569, z: -0.00028482286, w: 0.9956525}
-  m_LocalPosition: {x: -1.7254374, y: 0, z: -38}
+  m_LocalRotation: {x: -0.07904502, y: 0.24613394, z: 0.02891548, w: 0.9655744}
+  m_LocalPosition: {x: 49.61499, y: 26.993704, z: 279.31577}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14251,9 +14251,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 10
   maxRotationSpeed: 2000
-  rotationAcceleration: 700
+  rotationAcceleration: 1000
   effect: {fileID: 938274032}
-  speedEffect: 500
+  speedEffect: 1000
   speedOffsetTrails: 450
   timeToSizeMin: 3
   planeta: {fileID: 502113035}
@@ -14263,6 +14263,8 @@ MonoBehaviour:
   intensity: 13.5
   frequency: 6.44
   duration: 0.49
+  explosion: {fileID: 8300000, guid: b22bd28e0d69a2a4497b081d68ed1353, type: 3}
+  whooshIn: {fileID: 8300000, guid: cb3f0876e38199d499788557b64cf63a, type: 3}
 --- !u!1 &1763915123
 GameObject:
   m_ObjectHideFlags: 0
@@ -18112,7 +18114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   altavozMusica: {fileID: 3234387722183515565}
   altavozSFX: {fileID: 9115079465715012730}
-  audioMixer: {fileID: 0}
+  audioMixer: {fileID: 24100000, guid: a6ebae8729fb4b04f8b1110d229a97ef, type: 2}
   audioMixerGroupMusic: {fileID: -6378689915399808452, guid: a6ebae8729fb4b04f8b1110d229a97ef, type: 2}
   audioMixerGroupSFX: {fileID: 3925922728840420685, guid: a6ebae8729fb4b04f8b1110d229a97ef, type: 2}
   masterVolume: 0.5

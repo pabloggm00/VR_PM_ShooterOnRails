@@ -34,7 +34,7 @@ public class PlayerMove : MonoBehaviour
 
     private void Start()
     {
-        AudioManager.instance.PlaySFX(motor, true);
+        AudioManager.instance.PlaySFX(motor, true, 0.5f);
     }
 
     private void Update()

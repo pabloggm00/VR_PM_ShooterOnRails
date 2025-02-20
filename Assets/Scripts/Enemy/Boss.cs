@@ -26,13 +26,16 @@ public class Boss : MonoBehaviour
     [Header("ShakeCamera")]
     public float intensity, frequency, duration;
 
-    
+    [Header("SFX")]
+    public AudioClip explosion;
+    public AudioClip whooshIn;
 
     public void Init()
     {
         StartCoroutine(RotateAndExploit());
         //empieza a girar fuerte con un camshake
         canRotate = true;
+        AudioManager.instance.PlaySFX(whooshIn, false);
     }
 
     private void Update()
@@ -55,21 +58,24 @@ public class Boss : MonoBehaviour
             rotationSpeed = Mathf.Min(rotationSpeed + (rotationAcceleration * Time.deltaTime), maxRotationSpeed);
 
             planeta.transform.Rotate(Vector3.right * rotationSpeed * Time.deltaTime);
+              
 
             if (rotationSpeed >= maxRotationSpeed)
             {
                 canExploit = true;
                 sizeBoss.GetComponent<Animator>().enabled = true;
+              
             }
 
             yield return null; 
         }
 
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(1f);
 
         planeta.SetActive(false);
         CameraShake.Instance.Shake(intensity, frequency, duration);
         sizeBoss.GetComponent<Animator>().SetTrigger("Big");
+        AudioManager.instance.PlaySFX(explosion, false);
 
 
         yield return new WaitForSeconds(0.2f);

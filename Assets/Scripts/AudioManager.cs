@@ -88,7 +88,7 @@ public class AudioManager : MonoBehaviour
         musicSource.Play();
     }
 
-    public void PlaySFX(AudioClip clip, bool loop)
+    public void PlaySFX(AudioClip clip, bool loop, float offsetVolume = 0)
     {
         CleanUpSFX();
 
@@ -96,6 +96,7 @@ public class AudioManager : MonoBehaviour
 
         sfxSource = altavozSFX.AddComponent<AudioSource>();
         sfxSource.clip = clip;
+        sfxSource.volume -= offsetVolume;
 
         if (loop == true)
         {
@@ -111,6 +112,7 @@ public class AudioManager : MonoBehaviour
         sfxSource.outputAudioMixerGroup = audioMixerGroupSFX;
       
     }
+
 
     public void PauseAllSFX()
     {
